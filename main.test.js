@@ -2,11 +2,128 @@
  * YOUR CODE HERE *
  ******************/
 
+// addAll
+ function addAll(nums){
+  
+  let total = 0;
+  
+  for (const value of nums){
+    total += value;
+  }
+
+  return total;
+}
+
+
+//countSpaces
+function countSpaces(string){
+
+let total =0;
+
+  for (const value of string){
+
+    if(value === ' '){
+      total ++;
+    }
+  }
+
+  return total;
+ }
+
+//countTrues
+function countTrues(booleans){
+
+  let total = 0;
+
+  for (const value of booleans){
+
+    if(value === true){
+      total = total +1;
+    }
+  }
+  return total;
+}
+
+//makeFriendly
+
+function makeFriendly(string){
+
+  let newString = '';
+  for (const value of string){
+  newString += value.replace('.', '!');
+  }
+  return newString;
+}
 
 
 
 
+//cubeAll
+function cubeAll(array){
 
+  let newArray = [];
+  let newValue = 0;
+
+  for (const value of array){
+    newValue = Math.pow(value, 3);
+    newArray.push(newValue);
+  }
+
+  return newArray;
+}
+
+//addNoises
+
+function addNoises(array){
+
+  let newArray = [];
+  let newValue = '';
+
+  for (let value of array){
+    if(value === 'Fido'|| value === 'Rolph'||value === 'Maisie'){
+      newValue = value += ' says "Woof!"'
+      newArray.push(value += newValue);
+
+    }
+    else if(value === 'Garfield'|| value === 'Heathcliff'){
+      newValue = value += ' says "Meow!"'
+      newArray.push(value += newValue);
+
+    }
+    else if(value === 'Sharp Tooth'|| value === 'Barnie'){
+      newValue = value += ' says "ROWR."'
+      newArray.push(value += newValue);
+    }
+    
+  }
+  return newArray;
+}
+//womenOnly
+
+function womenOnly(array){
+
+  let newArray = [];
+  let newValue = '';
+
+  for (const value of array){
+    if(value.endsWith('F')){
+      newArray.push(value);
+    }
+  }
+return newArray;
+}
+
+//integersOnly
+
+function integersOnly(array){
+  let newArray = [];
+for (const value of array){
+  if (Number.isInteger(value)){
+    newArray.push(value);
+  }
+}
+return newArray;
+}
 
 /*********************************
  * OUR CODE BELOW; DO NOT TOUCH! *
