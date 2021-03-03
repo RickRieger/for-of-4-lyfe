@@ -78,21 +78,23 @@ function addNoises(array){
 
   let newArray = [];
   let newValue = '';
+  
 
   for (let value of array){
     if(value === 'Fido'|| value === 'Rolph'||value === 'Maisie'){
-      newValue = value += ' says "Woof!"'
-      newArray.push(value += newValue);
+      newValue = value.concat(' says "Woof!"');
+      newArray.push(newValue);
+      
 
     }
     else if(value === 'Garfield'|| value === 'Heathcliff'){
-      newValue = value += ' says "Meow!"'
-      newArray.push(value += newValue);
+      newValue = value.concat(' says "Meow!"');
+      newArray.push(newValue);
 
     }
     else if(value === 'Sharp Tooth'|| value === 'Barnie'){
-      newValue = value += ' says "ROWR."'
-      newArray.push(value += newValue);
+      newValue = value.concat(' says "ROWR."');
+      newArray.push(newValue);
     }
     
   }
