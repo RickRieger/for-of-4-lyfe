@@ -96,10 +96,22 @@ function addNoises(array){
       newValue = value.concat(' says "ROWR."');
       newArray.push(newValue);
     }
-    
+    else {
+      // unknown animal: keep its name so the array stays the same length (it's a map)
+      newArray.push(value);
+    }
+
   }
   return newArray;
 }
+
+// Extra test added during the 2026 cleanup (not part of the original assignment).
+// A map returns the same number of items it was given; unknown animals used to be dropped.
+describe('addNoises (unknown animals)', () => {
+  it('keeps unknown animals so the result is the same length', () => {
+    expect(addNoises(['Fido', 'Bob', 'Garfield'])).toEqual(['Fido says "Woof!"', 'Bob', 'Garfield says "Meow!"']);
+  });
+});
 //womenOnly
 
 function womenOnly(array){
