@@ -2,129 +2,105 @@
  * YOUR CODE HERE *
  ******************/
 
-// addAll
- function addAll(nums){
-  
-  let total = 0;
-  
-  for (const value of nums){
-    total += value;
-  }
+// ---- Reduce: many values in, one value out ----
 
+function addAll(nums) {
+  let total = 0;
+  for (const num of nums) {
+    total += num;
+  }
   return total;
 }
 
-
-//countSpaces
-function countSpaces(string){
-
-let total =0;
-
-  for (const value of string){
-
-    if(value === ' '){
-      total ++;
-    }
-  }
-
-  return total;
- }
-
-//countTrues
-function countTrues(booleans){
-
+function countSpaces(string) {
   let total = 0;
-
-  for (const value of booleans){
-
-    if(value === true){
-      total = total +1;
+  for (const char of string) {
+    if (char === ' ') {
+      total++;
     }
   }
   return total;
 }
 
-//makeFriendly
+// === true, not just "truthy": 'true', 3 and [] don't count
+function countTrues(values) {
+  let total = 0;
+  for (const value of values) {
+    if (value === true) {
+      total++;
+    }
+  }
+  return total;
+}
 
-function makeFriendly(string){
-
+// String building: copy each character, swapping periods for exclamation points
+function makeFriendly(string) {
   let newString = '';
-  for (const value of string){
-  newString += value.replace('.', '!');
+  for (const char of string) {
+    if (char === '.') {
+      newString += '!';
+    } else {
+      newString += char;
+    }
   }
   return newString;
 }
 
+// ---- Map: same number of items out, each one transformed ----
 
-
-
-//cubeAll
-function cubeAll(array){
-
-  let newArray = [];
-  let newValue = 0;
-
-  for (const value of array){
-    newValue = Math.pow(value, 3);
-    newArray.push(newValue);
+function cubeAll(nums) {
+  const cubes = [];
+  for (const num of nums) {
+    cubes.push(num ** 3);
   }
-
-  return newArray;
+  return cubes;
 }
 
-//addNoises
-
-function addNoises(array){
-
-  let newArray = [];
-  let newValue = '';
-  
-
-  for (let value of array){
-    if(value === 'Fido'|| value === 'Rolph'||value === 'Maisie'){
-      newValue = value.concat(' says "Woof!"');
-      newArray.push(newValue);
-      
-
-    }
-    else if(value === 'Garfield'|| value === 'Heathcliff'){
-      newValue = value.concat(' says "Meow!"');
-      newArray.push(newValue);
-
-    }
-    else if(value === 'Sharp Tooth'|| value === 'Barnie'){
-      newValue = value.concat(' says "ROWR."');
-      newArray.push(newValue);
-    }
-    
-  }
-  return newArray;
-}
-//womenOnly
-
-function womenOnly(array){
-
-  let newArray = [];
-  let newValue = '';
-
-  for (const value of array){
-    if(value.endsWith('F')){
-      newArray.push(value);
+function addNoises(animals) {
+  const withNoises = [];
+  for (const animal of animals) {
+    if (animal === 'Fido' || animal === 'Rolph' || animal === 'Maisie') {
+      withNoises.push(`${animal} says "Woof!"`);
+    } else if (animal === 'Garfield' || animal === 'Heathcliff') {
+      withNoises.push(`${animal} says "Meow!"`);
+    } else if (animal === 'Sharp Tooth' || animal === 'Barnie') {
+      withNoises.push(`${animal} says "ROWR."`);
+    } else {
+      // unknown animal: keep its name so the array stays the same length (it's a map)
+      withNoises.push(animal);
     }
   }
-return newArray;
+  return withNoises;
 }
 
-//integersOnly
+// Extra test added during the 2026 cleanup (not part of the original assignment).
+// A map returns the same number of items it was given; unknown animals used to be dropped.
+describe('addNoises (unknown animals)', () => {
+  it('keeps unknown animals so the result is the same length', () => {
+    expect(addNoises(['Fido', 'Bob', 'Garfield'])).toEqual(['Fido says "Woof!"', 'Bob', 'Garfield says "Meow!"']);
+  });
+});
 
-function integersOnly(array){
-  let newArray = [];
-for (const value of array){
-  if (Number.isInteger(value)){
-    newArray.push(value);
+// ---- Filter: same number of items or fewer, none transformed ----
+
+function womenOnly(people) {
+  const women = [];
+  for (const person of people) {
+    if (person.endsWith('F')) {
+      women.push(person);
+    }
   }
+  return women;
 }
-return newArray;
+
+function integersOnly(nums) {
+  const integers = [];
+  for (const num of nums) {
+    if (Number.isInteger(num)) {
+      integers.push(num);
+    }
+  }
+  return integers;
 }
 
 /*********************************
